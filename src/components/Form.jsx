@@ -1,11 +1,17 @@
 import { useEffect } from 'react';
 
-const Form = ({ values, update, submit, membertoedit, setformvalues }) => {
+const Form = ({
+	values,
+	update,
+	submit,
+	membertoedit,
+	setformvalues,
+	editmember,
+}) => {
 	useEffect(() => {
-		console.log(values);
 		setformvalues(membertoedit);
-		console.log(values);
-	}, [membertoedit]);
+		console.log(membertoedit);
+	}, [membertoedit, setformvalues]);
 
 	const onChange = (e) => {
 		const { name, value } = e.target;
@@ -14,6 +20,7 @@ const Form = ({ values, update, submit, membertoedit, setformvalues }) => {
 
 	const submitHandler = (e) => {
 		e.preventDefault();
+
 		submit();
 		console.log('click');
 	};
@@ -24,14 +31,14 @@ const Form = ({ values, update, submit, membertoedit, setformvalues }) => {
 				<input
 					type='text'
 					name='name'
-					value={values.name}
+					value={values.name || ''}
 					onChange={onChange}
 					placeholder='Member Name'
 				/>
 				<input
 					type='email'
 					name='email'
-					value={values.email}
+					value={values.email || ''}
 					onChange={onChange}
 					placeholder='name@email.com'
 				/>

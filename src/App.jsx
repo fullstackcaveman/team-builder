@@ -42,9 +42,16 @@ function App() {
 		setFormValues(initialMembersValues);
 	};
 
-	const editMember = (name, email, role) => {
+	const handleEditMember = (name, email, role) => {
 		setMemberToEdit(name, email, role);
-		console.log(memberToEdit);
+	};
+
+	const editMember = (membertoedit) => {
+		teamMembers.map((member) => {
+			if (member === membertoedit) {
+				setTeamMembers(...teamMembers, membertoedit);
+			}
+		});
 	};
 
 	return (
@@ -58,6 +65,7 @@ function App() {
 						submit={submitForm}
 						setformvalues={setFormValues}
 						membertoedit={memberToEdit}
+						editmember={editMember}
 					/>
 				</div>
 			</div>
@@ -68,7 +76,7 @@ function App() {
 						<Member
 							key={member.name}
 							details={member}
-							editmember={editMember}
+							editmember={handleEditMember}
 						/>
 					);
 				})}
