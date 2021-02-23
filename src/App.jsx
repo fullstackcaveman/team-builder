@@ -18,8 +18,9 @@ function App() {
 		},
 	]);
 	const [formvalues, setFormValues] = useState(initialMembersValues);
+	const [memberToEdit, setMemberToEdit] = useState([]);
 
-	console.log(teamMembers);
+	// console.log(teamMembers);
 
 	const updateForm = (inputName, inputValue) => {
 		setFormValues({ ...formvalues, [inputName]: inputValue });
@@ -36,8 +37,14 @@ function App() {
 			return;
 		}
 
-		setTeamMembers([...teamMembers, newMember]);
+		setTeamMembers(teamMembers.concat(newMember));
+		// setTeamMembers([...teamMembers, newMember]);
 		setFormValues(initialMembersValues);
+	};
+
+	const editMember = (name, email, role) => {
+		setMemberToEdit(name, email, role);
+		console.log(memberToEdit);
 	};
 
 	return (
@@ -45,13 +52,25 @@ function App() {
 			<div className='add-member'>
 				<h2>ADD A TEAM MEMBER</h2>
 				<div className='flex-column'>
-					<Form values={formvalues} update={updateForm} submit={submitForm} />
+					<Form
+						values={formvalues}
+						update={updateForm}
+						submit={submitForm}
+						setformvalues={setFormValues}
+						membertoedit={memberToEdit}
+					/>
 				</div>
 			</div>
 			<div className='team-members'>
 				<h2>TEAM MEMBERS</h2>
 				{teamMembers.map((member) => {
-					return <Member key={member.name} details={member} />;
+					return (
+						<Member
+							key={member.name}
+							details={member}
+							editmember={editMember}
+						/>
+					);
 				})}
 			</div>
 		</div>

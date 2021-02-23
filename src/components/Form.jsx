@@ -1,4 +1,12 @@
-const Form = ({ values, update, submit }) => {
+import { useEffect } from 'react';
+
+const Form = ({ values, update, submit, membertoedit, setformvalues }) => {
+	useEffect(() => {
+		console.log(values);
+		setformvalues(membertoedit);
+		console.log(values);
+	}, [membertoedit]);
+
 	const onChange = (e) => {
 		const { name, value } = e.target;
 		update(name, value);
