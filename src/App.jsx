@@ -17,12 +17,12 @@ function App() {
 			role: 'Full-Stack Developer',
 		},
 	]);
-	const [formvalues, setForValues] = useState(initialMembersValues);
+	const [formvalues, setFormValues] = useState(initialMembersValues);
 
 	console.log(teamMembers);
 
 	const updateForm = (inputName, inputValue) => {
-		setForValues({ ...formvalues, [inputName]: inputValue });
+		setFormValues({ ...formvalues, [inputName]: inputValue });
 	};
 
 	const submitForm = () => {
@@ -37,6 +37,7 @@ function App() {
 		}
 
 		setTeamMembers([...teamMembers, newMember]);
+		setFormValues(initialMembersValues);
 	};
 
 	return (
