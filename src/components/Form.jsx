@@ -29,9 +29,9 @@ const Form = ({ values, update, submit }) => {
 				/>
 				<select name='role' id='role' value={values.role} onChange={onChange}>
 					<option value='default'>-- Select Role --</option>
-					<option value='default'>Full-Stack Developer</option>
-					<option value='default'>Front-End Developer</option>
-					<option value='default'>Back-End Developer</option>
+					<option value='Full-Stack Developer'>Full-Stack Developer</option>
+					<option value='Front-End Developer'>Front-End Developer</option>
+					<option value='Back-End Developer'>Back-End Developer</option>
 				</select>
 				<div className='submit'>
 					<button disabled={!values.name || !values.email || !values.role}>
