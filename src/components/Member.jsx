@@ -5,9 +5,12 @@ const Member = ({ details }) => {
 
 	return (
 		<div className='member-container'>
-			<h2>{details.name}</h2>
-			<p>Email: {details.email}</p>
-			<p>Role: {details.role}</p>
+			<div className='details'>
+				<h2>{details.name}</h2>
+				<p>Email: {details.email}</p>
+				<p>Role: {details.role}</p>
+			</div>
+			<div className='edit-details'>{/* <button>EDIT</button> */}</div>
 		</div>
 	);
 };

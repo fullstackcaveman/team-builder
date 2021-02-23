@@ -1,8 +1,7 @@
 import { useState } from 'react';
 import './App.css';
 import Member from './components/Member';
-import MemberForm from './components/MemberForm';
-import MembersList from './components/MembersList';
+import Form from './components/Form';
 
 const initialMembersValues = {
 	name: '',
@@ -12,7 +11,11 @@ const initialMembersValues = {
 
 function App() {
 	const [teamMembers, setTeamMembers] = useState([
-		{ name: 'Chris', email: 'chris@5upgraphics.com', role: 'admin' },
+		{
+			name: 'Chris Burton',
+			email: 'chris@fullstackcaveman.com',
+			role: 'Full-Stack Developer',
+		},
 	]);
 	const [formvalues, setForValues] = useState(initialMembersValues);
 
@@ -39,12 +42,10 @@ function App() {
 	return (
 		<div className='App'>
 			<div className='add-member'>
-				<h2>ADD A MEMBER</h2>
-				<MemberForm
-					values={formvalues}
-					update={updateForm}
-					submit={submitForm}
-				/>
+				<h2>ADD A TEAM MEMBER</h2>
+				<div className='flex-column'>
+					<Form values={formvalues} update={updateForm} submit={submitForm} />
+				</div>
 			</div>
 			<div className='team-members'>
 				<h2>TEAM MEMBERS</h2>
